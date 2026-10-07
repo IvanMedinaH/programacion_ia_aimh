@@ -1,0 +1,4 @@
+DEBUG | catalog.search | Reading catalog: E:\1 CLASES MAESTRIA\Maestria en IA\1er semestre\Apuntes\github\Programacion para IA\programacion_ai\unidad-01-python-moderno\sesion-04-reproducibilidad\ivan\course-catalog\data\courses.json
+INFO | catalog.search | Search completed: 2 matches
+DEBUG | catalog.search | Reading catalog: E:\1 CLASES MAESTRIA\Maestria en IA\1er semestre\Apuntes\github\Programacion para IA\programacion_ai\unidad-01-python-moderno\sesion-04-reproducibilidad\ivan\course-catalog\data\courses.json
+INFO | catalog.search | Search completed: 2 matches
