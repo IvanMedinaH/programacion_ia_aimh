@@ -28,5 +28,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-# continuar en 1:24:09 video de clase 29/09

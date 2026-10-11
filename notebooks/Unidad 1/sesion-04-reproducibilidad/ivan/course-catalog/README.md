@@ -151,3 +151,89 @@ partir de uv.lock, incluir el .venv en el repositorio es innecesario y redundant
 
 
 ## Calidad:
+
+
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run --locked ruff check .
+<br><span  style="color: green;">All checks passed!</span>
+
+**Formato y estilo con ruff**
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run --locked ruff format --check .
+8 files already formatted
+
+**Mypy**
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run --locked mypy --strict main.py server.py client.py catalog
+Success: no issues found in 5 source files
+
+**pytest**
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run --locked python -m pytest
+====================================================================================================== test session starts =======================================================================================================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: E:\1 CLASES MAESTRIA\Maestria en IA\1er semestre\Apuntes\github\Programacion para IA\remoto_tarea\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 6 items                                                                                                                                                                                                                 
+
+tests\test_catalog.py .....                                                                                                                                                                                                 [ 83%]
+tests\test_mcp.py .                                                                                                                                                                                                         [100%]
+
+======================================================================================================= 6 passed in 2.51s ========================================================================================================
+(
+
+---
+### Ejercicio 6 · Corregir un aviso de Ruff
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run ruff check main.py
+I001 [*] Import block is un-sorted or un-formatted
+  --> main.py:1:1
+   |
+ 1 | / import argparse
+ 2 | | import json
+ 3 | | import logging
+ 4 | | from pathlib import Path
+ 5 | |
+ 6 | | from catalog.logging_config import configure_logging
+ 7 | | from catalog.search import DEFAULT_CATALOG, search_courses
+ 8 | | import sys
+   | |__________^
+ 9 |
+10 |   def main() -> int:
+   |
+help: Organize imports
+   |
+3  | import logging
+4  + import sys
+5  | from pathlib import Path                                                                                                                                                                                                      
+6  |
+7  | from catalog.logging_config import configure_logging
+8  | from catalog.search import DEFAULT_CATALOG, search_courses
+   - import sys
+9  |                                                                                                                                                                                                                               
+10 +
+11 | def main() -> int:                                                                                                                                                                                                            
+   |
+
+F401 [*] `sys` imported but unused
+  --> main.py:8:8
+   |
+ 6 | from catalog.logging_config import configure_logging
+ 7 | from catalog.search import DEFAULT_CATALOG, search_courses
+ 8 | import sys
+   |        ^^^
+ 9 |
+10 | def main() -> int:
+   |
+help: Remove unused import: `sys`
+  |
+7 | from catalog.search import DEFAULT_CATALOG, search_courses
+  - import sys
+8 |                                                                                                                                                                                                                                
+  |
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.
+
+![img.png](img.png)
+
+---
+<span style="color: green;">**[solucion]**</span><br>Salida consola:<br>
+\notebooks\Unidad 1\sesion-04-reproducibilidad\ivan\course-catalog> uv run ruff format main.py                
+1 file reformatted                                                                                                                                                                    
